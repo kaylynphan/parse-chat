@@ -54,6 +54,14 @@
     ChatCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"ChatCell" forIndexPath:indexPath];
     PFObject *message = self.arrayOfMessages[indexPath.row];
     cell.messageLabel.text = message[@"text"];
+    PFUser *user = message[@"user"];
+    if (user != nil) {
+        // User found! update username label with username
+        cell.userLabel.text = user.username;
+    } else {
+        // No user found, set default username
+        cell.userLabel.text = @"🤖";
+    }
     return cell;
 }
 
@@ -63,9 +71,9 @@
 
 - (void)onTimer {
     PFQuery *query = [PFQuery queryWithClassName:@"Message_FBU2021"];
+    [query includeKey:@"user"];
     [query orderByDescending:@"createdAt"];
     query.limit = 20;
-
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {

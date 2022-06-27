@@ -90,24 +90,37 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" rowHeight="124" id="4h2-R5-zlV" customClass="ChatCell">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="124"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" rowHeight="96" id="4h2-R5-zlV" customClass="ChatCell">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="96"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4h2-R5-zlV" id="Mkt-Nk-UeJ" customClass="ChatCell">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="124"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5w-dk-93x">
-                                                    <rect key="frame" x="35" y="31" width="69" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="userLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0n-XP-mZq">
+                                                    <rect key="frame" x="31" y="19" width="75" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="messageLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5w-dk-93x">
+                                                    <rect key="frame" x="31" y="51" width="110" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="G0n-XP-mZq" firstAttribute="leading" secondItem="Mkt-Nk-UeJ" secondAttribute="leading" constant="31" id="0s5-oq-zCm"/>
+                                                <constraint firstItem="H5w-dk-93x" firstAttribute="top" secondItem="G0n-XP-mZq" secondAttribute="bottom" constant="11" id="DSD-47-jAp"/>
+                                                <constraint firstAttribute="bottom" secondItem="H5w-dk-93x" secondAttribute="bottom" constant="36" id="e0m-h4-IWo"/>
+                                                <constraint firstItem="H5w-dk-93x" firstAttribute="leading" secondItem="G0n-XP-mZq" secondAttribute="leading" id="sgT-qp-0NQ"/>
+                                                <constraint firstItem="G0n-XP-mZq" firstAttribute="top" secondItem="Mkt-Nk-UeJ" secondAttribute="top" constant="19" id="y6n-5I-kRa"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="messageLabel" destination="H5w-dk-93x" id="6Ya-hL-iRQ"/>
+                                            <outlet property="userLabel" destination="G0n-XP-mZq" id="gnW-tc-iK5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -138,7 +151,7 @@
         <!--Navigation Controller-->
         <scene sceneID="VjM-pq-aiX">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VxP-Js-VGX" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ChatNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="VxP-Js-VGX" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oEA-Q6-lI9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
