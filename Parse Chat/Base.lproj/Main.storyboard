@@ -60,11 +60,46 @@
                     <connections>
                         <outlet property="passwordField" destination="iuG-dg-Bkb" id="khq-Z2-5VQ"/>
                         <outlet property="usernameField" destination="MSR-hB-naM" id="ZWK-sA-2mc"/>
+                        <segue destination="VxP-Js-VGX" kind="presentation" identifier="loginSegue" id="Yb0-Tg-Waf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="18.840579710144929" y="75"/>
+            <point key="canvasLocation" x="46" y="102"/>
+        </scene>
+        <!--Chat-->
+        <scene sceneID="smb-Jz-iFv">
+            <objects>
+                <viewController id="9yB-CE-VIJ" customClass="ChatViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pcC-31-RB1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="X5D-Xz-5vt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Chat" id="2sf-NP-rEC"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iqW-sF-vSm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1789.8550724637682" y="101.78571428571428"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="VjM-pq-aiX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VxP-Js-VGX" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oEA-Q6-lI9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9yB-CE-VIJ" kind="relationship" relationship="rootViewController" id="XiL-tV-EQs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bv7-nx-Wr4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="879.71014492753625" y="101.78571428571428"/>
         </scene>
     </scenes>
     <resources>
