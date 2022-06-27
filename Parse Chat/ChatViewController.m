@@ -63,6 +63,7 @@
 
 - (void)onTimer {
     PFQuery *query = [PFQuery queryWithClassName:@"Message_FBU2021"];
+    [query orderByDescending:@"createdAt"];
     query.limit = 20;
 
     // fetch data asynchronously
