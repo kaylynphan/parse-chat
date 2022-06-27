@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *chatMessageField;
 - (IBAction)didTapSend:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *arrayOfMessages;
 
 @end
 
@@ -22,7 +23,8 @@
     [super viewDidLoad];
     [self.tableView setDataSource:self];
     [self.tableView setDelegate:self];
-    // Do any additional setup after loading the view.
+    self.arrayOfMessages = [[NSArray alloc] init];
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
 }
 
 /*
@@ -50,12 +52,28 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     ChatCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"ChatCell" forIndexPath:indexPath];
-    cell.messageLabel.text = @"Hello";
+    PFObject *message = self.arrayOfMessages[indexPath.row];
+    cell.messageLabel.text = message[@"text"];
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return self.arrayOfMessages.count;
+}
+
+- (void)onTimer {
+    PFQuery *query = [PFQuery queryWithClassName:@"Message_FBU2021"];
+    query.limit = 20;
+
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (posts != nil) {
+            self.arrayOfMessages = posts;
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
 }
 
 
